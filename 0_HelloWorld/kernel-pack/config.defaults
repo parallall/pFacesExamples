@@ -1,0 +1,9 @@
+#-----------------------------------------------------------------------
+# File: example.mem
+# Date: 01.04.2020
+# Athr: M. Khaled
+# Desc: This file describes the defaults of any config file that
+# will be loaded later to the kernel.
+#-----------------------------------------------------------------------
+
+config_message = "no message";

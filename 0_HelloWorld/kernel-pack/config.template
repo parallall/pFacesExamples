@@ -1,0 +1,9 @@
+#-----------------------------------------------------------------------
+# File: example.mem
+# Date: 01.04.2020
+# Athr: M. Khaled
+# Desc: This file describes the template of any later config file to be loaded to the kernel.
+#-----------------------------------------------------------------------
+
+config_message = string
+
