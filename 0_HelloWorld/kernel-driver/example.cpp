@@ -57,8 +57,6 @@ namespace pFacesExamples{
 		std::vector<std::pair<char*, size_t>> dataPool;
 		pFacesMemoryAllocationReport memReport;
 		memReport = allocateMemory(dataPool, thisMachine, parallelProgram.getTargetDevicesIndicies(), 1, false);
-		memReport.PrintReport();
-
 
 		/* the parallel program needs a alist of instructionss */
 		std::vector<std::shared_ptr<pfacesInstruction>> instrList;	
