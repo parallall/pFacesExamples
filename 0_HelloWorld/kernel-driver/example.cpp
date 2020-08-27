@@ -49,8 +49,8 @@ namespace pFacesExamples{
 		auto thisMachine = parallelProgram.getMachine();
 		auto thisDevice = parallelProgram.getTargetDevices()[0];
 
-		/* the range/offset of this kernel : we just need one thread */
-		const cl::NDRange ndKernelRange(1,1);
+		/* the range/offset of this kernel */
+		const cl::NDRange ndKernelRange(thread_grid_x, thread_grid_y);
 		const cl::NDRange ndKernelOffset(0,0);
 
 		/* allocate memory */
