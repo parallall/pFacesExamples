@@ -50,8 +50,8 @@ namespace pFacesExamples{
 		auto thisDevice = parallelProgram.getTargetDevices()[0];
 
 		/* the range/offset of this kernel */
-		const cl::NDRange ndKernelRange(thread_grid_x, thread_grid_y);
-		const cl::NDRange ndKernelOffset(0,0);
+		cl::NDRange ndKernelRange(thread_grid_x, thread_grid_y);
+		cl::NDRange ndKernelOffset(0,0);
 
 		/* allocate memory */
 		std::vector<std::pair<char*, size_t>> dataPool;
