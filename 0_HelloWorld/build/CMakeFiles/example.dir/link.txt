@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -fPIC -O3 -DNDEBUG -Wl,--whole-archive -lpfaces-sdk -Wl,--no-whole-archive -shared -Wl,-soname,example.driver -o ../kernel-pack/example.driver CMakeFiles/example.dir/kernel/example.cpp.o   -L/home/kmahmoud/myWorkspace/pFaces/tests/../pfaces-sdk/lib 

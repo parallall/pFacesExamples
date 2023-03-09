@@ -1,0 +1,57 @@
+-----------------------------------------------------------------
+Build log started on Thursday 09/03/2023 21:33:19-859
+-----------------------------------------------------------------
+Number of devices: 1
+Devices: NVIDIA GeForce RTX 2080 Ti; 
+Purpose: Building context for a run on a single devices.
+OpenCL compiler params: -cl-std=CL1.2 -cl-kernel-arg-info -I /home/kmahmoud/myWorkspace/pFaces/bin/kernels/ -I ./kernel-pack/ -DUNIVERSAL_WIDTH_X=1 -DUNIVERSAL_WIDTH_Y=1 -DUNIVERSAL_OFFSET_X=0 -DUNIVERSAL_OFFSET_Y=0 -DPROCESS_WIDTH_X=0 -DPROCESS_WIDTH_Y=0 -DPROCESS_OFFSET_X=0 -DPROCESS_OFFSET_Y=0
+Kernel file: ./kernel-pack/example.gpu.cl.render
+-----------------------------------------------------------------
+Build was succesufull with the following log:
+
+
+Build log for  Dev. [NVIDIA GeForce RTX 2080 Ti] with options (-cl-std=CL1.2 -cl-kernel-arg-info -I /home/kmahmoud/myWorkspace/pFaces/bin/kernels/ -I ./kernel-pack/ -DUNIVERSAL_WIDTH_X=1 -DUNIVERSAL_WIDTH_Y=1 -DUNIVERSAL_OFFSET_X=0 -DUNIVERSAL_OFFSET_Y=0 -DPROCESS_WIDTH_X=0 -DPROCESS_WIDTH_Y=0 -DPROCESS_OFFSET_X=0 -DPROCESS_OFFSET_Y=0):
+
+
+-----------------------------------------------------------------
+Build ended
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+Build log started on Thursday 09/03/2023 21:48:06-577
+-----------------------------------------------------------------
+Number of devices: 1
+Devices: NVIDIA GeForce RTX 2080 Ti; 
+Purpose: Building context for a run on a single devices.
+OpenCL compiler params: -cl-std=CL1.2 -cl-kernel-arg-info -I /home/kmahmoud/myWorkspace/pFaces/bin/kernels/ -I ./kernel-pack/ -DUNIVERSAL_WIDTH_X=1 -DUNIVERSAL_WIDTH_Y=1 -DUNIVERSAL_OFFSET_X=0 -DUNIVERSAL_OFFSET_Y=0 -DPROCESS_WIDTH_X=0 -DPROCESS_WIDTH_Y=0 -DPROCESS_OFFSET_X=0 -DPROCESS_OFFSET_Y=0
+Kernel file: ./kernel-pack/example.gpu.cl.render
+-----------------------------------------------------------------
+Build was succesufull with the following log:
+
+
+Build log for  Dev. [NVIDIA GeForce RTX 2080 Ti] with options (-cl-std=CL1.2 -cl-kernel-arg-info -I /home/kmahmoud/myWorkspace/pFaces/bin/kernels/ -I ./kernel-pack/ -DUNIVERSAL_WIDTH_X=1 -DUNIVERSAL_WIDTH_Y=1 -DUNIVERSAL_OFFSET_X=0 -DUNIVERSAL_OFFSET_Y=0 -DPROCESS_WIDTH_X=0 -DPROCESS_WIDTH_Y=0 -DPROCESS_OFFSET_X=0 -DPROCESS_OFFSET_Y=0):
+
+
+-----------------------------------------------------------------
+Build ended
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+Build log started on Thursday 09/03/2023 21:48:19-798
+-----------------------------------------------------------------
+Number of devices: 1
+Devices: NVIDIA GeForce RTX 2080 Ti; 
+Purpose: Building context for a run on a single devices.
+OpenCL compiler params: -cl-std=CL1.2 -cl-kernel-arg-info -I /home/kmahmoud/myWorkspace/pFaces/bin/kernels/ -I ./kernel-pack/ -DUNIVERSAL_WIDTH_X=1 -DUNIVERSAL_WIDTH_Y=1 -DUNIVERSAL_OFFSET_X=0 -DUNIVERSAL_OFFSET_Y=0 -DPROCESS_WIDTH_X=0 -DPROCESS_WIDTH_Y=0 -DPROCESS_OFFSET_X=0 -DPROCESS_OFFSET_Y=0
+Kernel file: ./kernel-pack/example.gpu.cl.render
+-----------------------------------------------------------------
+Build was succesufull with the following log:
+
+
+Build log for  Dev. [NVIDIA GeForce RTX 2080 Ti] with options (-cl-std=CL1.2 -cl-kernel-arg-info -I /home/kmahmoud/myWorkspace/pFaces/bin/kernels/ -I ./kernel-pack/ -DUNIVERSAL_WIDTH_X=1 -DUNIVERSAL_WIDTH_Y=1 -DUNIVERSAL_OFFSET_X=0 -DUNIVERSAL_OFFSET_Y=0 -DPROCESS_WIDTH_X=0 -DPROCESS_WIDTH_Y=0 -DPROCESS_OFFSET_X=0 -DPROCESS_OFFSET_Y=0):
+
+
+-----------------------------------------------------------------
+Build ended
+-----------------------------------------------------------------
+

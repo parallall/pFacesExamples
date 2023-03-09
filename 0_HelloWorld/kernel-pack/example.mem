@@ -10,7 +10,7 @@ exampleKernelFunction{
 
 	# argument 0.0: data_in
 	data_in{
-        MemConfig               = "pfaces_rw_global";
+    MemConfig           = "pfaces_rw_global";
 		isNewOrResident			= "true"; 
 	}
 }

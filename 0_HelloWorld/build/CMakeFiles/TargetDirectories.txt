@@ -1,0 +1,3 @@
+/home/kmahmoud/myWorkspace/pFaces/tests/samples/pFacesExamples/0_HelloWorld/build/CMakeFiles/rebuild_cache.dir
+/home/kmahmoud/myWorkspace/pFaces/tests/samples/pFacesExamples/0_HelloWorld/build/CMakeFiles/edit_cache.dir
+/home/kmahmoud/myWorkspace/pFaces/tests/samples/pFacesExamples/0_HelloWorld/build/CMakeFiles/example.dir
