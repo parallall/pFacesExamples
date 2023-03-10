@@ -1,1 +1,6 @@
 */build/
+*.render
+*.render_defaults
+*.render_schema
+*.log
+*.driver

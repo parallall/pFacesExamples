@@ -2,12 +2,7 @@
 
 namespace pFacesExamples {
 
-/// Some constants
-// The name of the kernel source file without the .cl extension.
-const std::string kernel_source = "example";
-// The name of the kernel memory footprint file.
-const std::string mem_cfg_file = "example.mem";
-// The 2-dim size of the ND Range.
+/// Some constants for the ND-Range.
 constexpr size_t thread_grid_x{1U};
 constexpr size_t thread_grid_y{1U};
 
@@ -15,14 +10,11 @@ constexpr size_t thread_grid_y{1U};
 pFacesExample::pFacesExample(
   const std::shared_ptr<pfacesKernelLaunchState>& spLaunchState,
   const std::shared_ptr<pfacesConfigurationReader>& spCfg)
-  : pfaces2DKernel(
-      spLaunchState->getDefaultSourceFilePath(kernel_source, spLaunchState->kernelScope, spLaunchState->kernelPackPath),
-      thread_grid_x,
-      thread_grid_y,
-      spCfg) {
+  : pfaces2DKernel(spLaunchState->getDefaultSourceFilePath("example"), thread_grid_x, thread_grid_y, spCfg) {
 
   // Full path of the memory config file.
-  const std::string memFile = spLaunchState->kernelPackPath + mem_cfg_file;
+  const std::string mem_cfg_file = "example.mem";
+  const std::string memFile = spLaunchState->getKernelPackPath() + mem_cfg_file;
 
   // Create a kernel function and load its memory fingerprints
   const std::string funcName = "exampleKernelFunction";
@@ -39,7 +31,7 @@ pFacesExample::pFacesExample(
 void pFacesExample::configureParallelProgram(pfacesParallelProgram& parallelProgram) {
 
   // Check we run within only one device.
-  PFACES_ASSERT_CONTEXT(parallelProgram.countTargetDevices() > 1, "This example supports only one target device.");
+  PFACES_ASSERT_CONTEXT(parallelProgram.countTargetDevices() == 1, "This example supports only one target device.");
 
   // Get target machine/device.
   const auto& thisMachine = parallelProgram.getMachine();
@@ -49,17 +41,16 @@ void pFacesExample::configureParallelProgram(pfacesParallelProgram& parallelProg
   const cl::NDRange ndKernelRange(thread_grid_x, thread_grid_y);
   const cl::NDRange ndKernelOffset(0U, 0U);
 
-  /* allocate memory */
+  // Allocate device memory.
   std::vector<std::pair<char*, size_t>> dataPool;
-  pFacesMemoryAllocationReport memReport;
-  memReport = allocateMemory(dataPool, thisMachine, parallelProgram.getTargetDevicesIndicies(), 1, false);
+  allocateMemory(dataPool, thisMachine, parallelProgram.getTargetDevicesIndicies(), 1U, false);
 
-  /* the parallel program needs a alist of instructions */
+  // Build the parallel as a alist of instructions.
   std::vector<std::shared_ptr<pfacesInstruction>> instrList;
 
-  /* an instruction to show a simple message from the CPU side */
-  std::shared_ptr<pfacesInstruction> instrMsg_start = std::make_shared<pfacesInstruction>();
-  instrMsg_start->setAsMessage("Hello World from host side !");
+  // An instruction to show a simple message from the CPU side.
+  instrList.push_back(std::make_shared<pfacesInstruction>());
+  instrList.back()->setAsMessage("Hello World from host side !");
 
   /* an instruction to lauch parallel threadss in the device */
   std::shared_ptr<pfacesDeviceExecuteTask> singleTask =
@@ -78,7 +69,6 @@ void pFacesExample::configureParallelProgram(pfacesParallelProgram& parallelProg
   instrSyncPoint->setAsBlockingSyncPoint();
 
   /* build the parallel program */
-  instrList.push_back(instrMsg_start);
   instrList.push_back(devFunctionInstruction);
   instrList.push_back(instrSyncPoint);
 
