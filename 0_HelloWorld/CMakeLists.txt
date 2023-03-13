@@ -16,10 +16,10 @@ set(PFACES_KERNEL_OUT_PATH "${PROJECT_SOURCE_DIR}/kernel-pack")
 
 # Add the kerel as a shared lib
 add_library(${PFACES_KERNEL} SHARED
-  ${PROJECT_SOURCE_DIR}/kernel/example.cpp
+  ${PROJECT_SOURCE_DIR}/kernel-driver/example.cpp
 )
 target_include_directories(${PFACES_KERNEL} PUBLIC
-    ${PROJECT_SOURCE_DIR}/kernel
+    ${PROJECT_SOURCE_DIR}/kernel-driver
 )
 
 # Include link configs for the kernel.
