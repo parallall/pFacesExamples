@@ -14,7 +14,7 @@ endif()
 set(PFACES_KERNEL example)
 set(PFACES_KERNEL_OUT_PATH "${PROJECT_SOURCE_DIR}/kernel-pack")
 
-# Add the kerel as a shared lib
+# Add the kernel as a shared lib
 add_library(${PFACES_KERNEL} SHARED
   ${PROJECT_SOURCE_DIR}/kernel-driver/example.cpp
 )
