@@ -1,7 +1,8 @@
 #!/bin/sh
+set -e
 
-# make the example
-make
+# build the example
+sh ./build.sh
 
 # run the example
 pfaces -CG -d 1 -k example -v0
