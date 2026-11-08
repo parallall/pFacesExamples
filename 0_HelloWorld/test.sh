@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+# build the driver if not already built
+[ ! -f ./kernel-pack/example.driver ] && sh ./build.sh
+
 # run the example without config
 pfaces -CG -d 1 -k example -v0
 
