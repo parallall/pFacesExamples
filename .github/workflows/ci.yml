@@ -32,7 +32,7 @@ jobs:
 
       - name: Download and Install pFaces v1.5
         run: |
-          curl -sL https://github.com/mkhaled87/pFaces/releases/download/v1.5.0/pFaces-1.5-Ubuntu22.04.5LTS-x86_64.zip -o pfaces.zip
+          curl -sL https://github.com/parallall/pFaces/releases/download/v1.5.0/pFaces-1.5-Ubuntu22.04.5LTS-x86_64.zip -o pfaces.zip
           sudo mkdir -p /opt/pfaces
           sudo unzip -q pfaces.zip -d /opt/pfaces
           cd /opt/pfaces

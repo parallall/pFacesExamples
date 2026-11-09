@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install pFaces v1.5 from GitHub Releases
 WORKDIR /opt/pfaces
-RUN curl -sL https://github.com/mkhaled87/pFaces/releases/download/v1.5.0/pFaces-1.5-Ubuntu22.04.5LTS-x86_64.zip -o pfaces.zip \
+RUN curl -sL https://github.com/parallall/pFaces/releases/download/v1.5.0/pFaces-1.5-Ubuntu22.04.5LTS-x86_64.zip -o pfaces.zip \
     && unzip -q pfaces.zip \
     && rm pfaces.zip \
     && sh ./install.sh
