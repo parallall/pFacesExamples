@@ -45,7 +45,7 @@ jobs:
         run: |
           clinfo -l || true
           pfaces -h
-          pfaces -CGH -l
+          pfaces -CG -l
 
       - name: Build Examples
         run: sh ./build.sh
