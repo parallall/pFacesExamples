@@ -2,23 +2,23 @@
 
 [![CI](https://github.com/parallall/pFacesExamples/actions/workflows/ci.yml/badge.svg)](https://github.com/parallall/pFacesExamples/actions/workflows/ci.yml)
 [![pFaces](https://img.shields.io/badge/pFaces->=1.5-blue.svg)](https://github.com/parallall/pFaces)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](0_HelloWorld/LICENSE)
 
-Canonical data-parallel OpenCL and C++ driver examples for **pFaces** (matching classic OpenCL/CUDA patterns), complete with build scripts, profiling tests, host-pinned (`-hm`) execution, and automated CPU ground-truth verification.
+A progressive 7-part learning curriculum introducing canonical data-parallel algorithms (matching classic OpenCL and CUDA patterns) in **pFaces** — moving step-by-step from kernel/driver basics to shared-memory tiling, tree reductions, VM ping-pong loops, and atomic privatization, complete with host ground-truth verification.
 
 ---
 
-## Contents
+## Learning Curriculum (`0` → `6`)
 
-| Example | Kernel | Core Parallel Pattern & pFaces Features Demonstrated | Ground-Truth Verification |
-| :--- | :--- | :--- | :--- |
-| **`0_HelloWorld`** | `example` | Minimal kernel driver, config/parameter macros (`config.template`, `@@param@@`), device-to-host buffer readback | Verifies `"pFcs"` handshake token (`[PASS]`) |
-| **`1_VectorAdd`** | `vecadd` | Element-wise 1D SAXPY (`C = alpha * A + B`), `isRangeScalable = "true"` | Compares every element against host FP32 reference (`max_abs_err <= 1e-5`) |
-| **`2_MatrixMul`** | `matmul` | 2D ND-Range, `__local` memory tiling + `barrier(CLK_LOCAL_MEM_FENCE)`, auto-tuner `-t` (`configureTuneParallelProgram`), dynamic `.mem` sizing | Compares against exact `(M x K) * (K x N)` CPU reference (`max_abs_err <= 1e-3`) |
-| **`3_ParallelReduction`** | `reduction` | Two-stage tree reduction in `__local` memory, resident buffers via `residentArgRef`, multi-kernel sequencing | Compares against double-precision Kahan summation (`rel_err <= 1e-4`) |
-| **`4_Stencil2D_Heat`** | `heat2d` | 2D 5-point Jacobi heat diffusion, ping-pong device buffers, VM iteration loop via `setAsHostFunction` + `setAsJumpNe` | Compares converged field against double-buffered CPU reference (`max_abs_err <= 1e-4`) |
-| **`5_NBody`** | `nbody` | Tiled all-pairs 3D gravitational N-body with `float4` vectors and `__local` position caching inside a VM ping-pong loop | Compares all positions & velocities against `O(N^2)` CPU simulation |
-| **`6_Histogram`** | `histogram` | 256-bin histogram using `__local uint[256]` privatization (`atomic_inc`) and global `atomic_add` merge | Exact integer equality across all 256 bins (`mismatched_bins == 0`) |
+| Lesson | Example | Core Parallel Concept & pFaces Features Introduced | Builds On | Ground-Truth Verification |
+| :--- | :--- | :--- | :--- | :--- |
+| **0** | [**`0_HelloWorld`**](0_HelloWorld/README.md) | Kernel pack vs C++ driver anatomy, `@pfaces-configValueString` & `@@param@@` macros, VM messages & host readback | *Start here* | Verifies `"pFcs"` handshake token (`[PASS]`) |
+| **1** | [**`1_VectorAdd`**](1_VectorAdd/README.md) | 1D element-wise SAXPY (`get_global_id(0)`), `isRangeScalable = "true"` buffer scaling, `-hm` vs discrete DMA writes | Lesson 0 | Compares every element against host FP32 reference (`max_abs_err <= 1e-5`) |
+| **2** | [**`2_MatrixMul`**](2_MatrixMul/README.md) | 2D ND-Range, `__local` shared-memory tiling + `barrier(CLK_LOCAL_MEM_FENCE)`, dynamic `.mem` sizing, auto-tuner (`-t`) | Lesson 1 | Compares against exact `(M x K) * (K x N)` CPU reference |
+| **3** | [**`3_ParallelReduction`**](3_ParallelReduction/README.md) | Many-to-one binary tree reduction, grid-stride loops, dynamic `isLocalMemory`, multi-kernel chaining (`residentArgRef`) | Lesson 2 | Compares against double-precision Kahan summation (`rel_err <= 1e-4`) |
+| **4** | [**`4_Stencil2D_Heat`**](4_Stencil2D_Heat/README.md) | 2D 5-point Jacobi PDE stencil, ping-pong double buffering, VM loops (`setAsHostFunction` + `setAsJumpNe`) | Lessons 2, 3 | Compares converged field against double-buffered CPU reference (`max_abs_err <= 1e-4`) |
+| **5** | [**`5_NBody`**](5_NBody/README.md) | All-pairs $O(N^2)$ tiled force accumulation, 16-byte `float4` vectors, divergence-safe tile barriers inside a VM ping-pong loop | Lessons 2, 4 | Compares all positions & velocities against $O(N^2)$ CPU simulation |
+| **6** | [**`6_Histogram`**](6_Histogram/README.md) | Scatter-add privatization (`__local uint[256]`), `atomic_inc` / `atomic_add`, device buffer clear (`zeroBins`) | Lessons 3, 5 | Exact 256-bin integer equality (`mismatched_bins == 0`) |
 
 ---
 
@@ -39,20 +39,20 @@ Canonical data-parallel OpenCL and C++ driver examples for **pFaces** (matching 
 # Build all example drivers (0_HelloWorld .. 6_Histogram)
 sh build.sh
 
-# Or build a specific example:
+# Or build a specific lesson:
 cd 2_MatrixMul
 sh build.sh
 ```
 
 ### 2. Run All Verification Tests
 
-Each example verifies its OpenCL device output against host ground truth inside `registerPostExecuteFunction` across default config, custom `.cfg` + profiling (`-p`), and host-pinned shared memory (`-hm`), returning a non-zero exit code on any mismatch.
+Each lesson verifies its OpenCL device output against host ground truth inside `registerPostExecuteFunction` across default config, custom `.cfg` + profiling (`-p`), and host-pinned shared memory (`-hm`), returning a non-zero exit code on any mismatch.
 
 ```bash
-# Build (if needed) and run all 7 examples
+# Build (if needed) and run all 7 lessons
 sh test.sh
 
-# Or run a specific example directly:
+# Or run a specific lesson directly:
 cd 4_Stencil2D_Heat
 sh test.sh
 ```
@@ -67,7 +67,7 @@ A pre-configured `Dockerfile` based on `Ubuntu 24.04`, PoCL CPU OpenCL, and `pFa
 # Build the container image
 docker build -t pfaces-examples .
 
-# Run all examples inside the container
+# Run all lessons inside the container
 docker run --rm pfaces-examples
 ```
 
@@ -75,4 +75,4 @@ docker run --rm pfaces-examples
 
 ## License
 
-This repository is distributed under the [MIT License](LICENSE).
+This repository is distributed under the [MIT License](0_HelloWorld/LICENSE).
