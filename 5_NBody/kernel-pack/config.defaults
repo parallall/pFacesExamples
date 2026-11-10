@@ -1,0 +1,5 @@
+num_bodies = "1024";
+steps = "10";
+dt = "0.01";
+softening = "0.2";
+wg_size = "64";

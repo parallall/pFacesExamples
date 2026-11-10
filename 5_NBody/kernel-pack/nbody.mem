@@ -1,0 +1,89 @@
+nbodyStepAB {
+    pos_in {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "true";
+        HostDoWrite = "true";
+        HostDoRead = "true";
+        baseTypeSize = "16";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+    }
+    pos_out {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "16";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+    }
+    vel {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "true";
+        HostDoWrite = "true";
+        HostDoRead = "true";
+        baseTypeSize = "16";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+    }
+    tile_pos {
+        MemConfig = "pfaces_rw_global";
+        isGlobalMemory = "false";
+        isConstantMemory = "false";
+        isLocalMemory = "true";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "16";
+        baseTypeMultiple = "64";
+        isRangeScalable = "false";
+    }
+}
+
+nbodyStepBA {
+    pos_in {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "16";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+        isNewOrResident = "false";
+        residentArgRef = "nbodyStepAB.pos_out";
+    }
+    pos_out {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "16";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+        isNewOrResident = "false";
+        residentArgRef = "nbodyStepAB.pos_in";
+    }
+    vel {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "16";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+        isNewOrResident = "false";
+        residentArgRef = "nbodyStepAB.vel";
+    }
+    tile_pos {
+        MemConfig = "pfaces_rw_global";
+        isGlobalMemory = "false";
+        isConstantMemory = "false";
+        isLocalMemory = "true";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "16";
+        baseTypeMultiple = "64";
+        isRangeScalable = "false";
+    }
+}

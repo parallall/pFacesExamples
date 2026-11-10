@@ -1,0 +1,6 @@
+width = string
+height = string
+iterations = string
+diffusion = string
+wg_x = string
+wg_y = string

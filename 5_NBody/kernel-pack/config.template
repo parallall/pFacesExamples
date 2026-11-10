@@ -1,0 +1,5 @@
+num_bodies = string
+steps = string
+dt = string
+softening = string
+wg_size = string

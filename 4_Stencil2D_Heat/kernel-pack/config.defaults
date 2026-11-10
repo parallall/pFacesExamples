@@ -1,0 +1,6 @@
+width = "128";
+height = "128";
+iterations = "100";
+diffusion = "0.2";
+wg_x = "16";
+wg_y = "16";

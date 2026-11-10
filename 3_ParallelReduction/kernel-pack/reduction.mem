@@ -1,0 +1,67 @@
+reducePartial {
+    in_data {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "true";
+        HostDoWrite = "true";
+        HostDoRead = "false";
+        baseTypeSize = "4";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+    }
+    partial_sums {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "4";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+    }
+    scratch {
+        MemConfig = "pfaces_rw_global";
+        isGlobalMemory = "false";
+        isConstantMemory = "false";
+        isLocalMemory = "true";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "4";
+        baseTypeMultiple = "64";
+        isRangeScalable = "false";
+    }
+}
+
+reduceFinal {
+    partial_sums {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "4";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+        isNewOrResident = "false";
+        residentArgRef = "reducePartial.partial_sums";
+    }
+    final_sum {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "true";
+        baseTypeSize = "4";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+    }
+    scratch {
+        MemConfig = "pfaces_rw_global";
+        isGlobalMemory = "false";
+        isConstantMemory = "false";
+        isLocalMemory = "true";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "4";
+        baseTypeMultiple = "64";
+        isRangeScalable = "false";
+    }
+}

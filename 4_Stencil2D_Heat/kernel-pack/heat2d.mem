@@ -1,0 +1,45 @@
+jacobiStepAB {
+    grid_in {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "true";
+        HostDoWrite = "true";
+        HostDoRead = "true";
+        baseTypeSize = "4";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+    }
+    grid_out {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "4";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+    }
+}
+
+jacobiStepBA {
+    grid_in {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "4";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+        isNewOrResident = "false";
+        residentArgRef = "jacobiStepAB.grid_out";
+    }
+    grid_out {
+        MemConfig = "pfaces_rw_global";
+        directionWriteOrRead = "false";
+        HostDoWrite = "false";
+        HostDoRead = "false";
+        baseTypeSize = "4";
+        baseTypeMultiple = "1";
+        isRangeScalable = "false";
+        isNewOrResident = "false";
+        residentArgRef = "jacobiStepAB.grid_in";
+    }
+}
